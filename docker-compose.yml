@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  todosDB:
+    image: postgres:15.3              # Imagen oficial de PostgreSQL 15.3
+    container_name: todos-db          # Nombre que tendrá el contenedor
+    restart: always                   # Se reinicia automáticamente si se cae
+    ports:
+      - 5432:5432                     # Expone el puerto 5432 (el default de PostgreSQL)
+    environment:
+      - POSTGRES_USER=postgres        # Usuario por defecto
+      - POSTGRES_PASSWORD=postgres    # Contraseña
+    volumes:
+      - ./postgres:/var/lib/postgresql/data  # Persistencia de datos en tu sistema host
+
