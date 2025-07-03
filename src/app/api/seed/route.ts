@@ -15,6 +15,20 @@ export async function GET(request: Request) {
     ]
   })
 
+  await prisma.users.createMany({
+    data: [
+      { name: 'Hazael', description: 'es pro' },
+      { name: 'Andrea', description: 'Es hermosisima' },
+      { name: 'Abdiel', description: 'e una rata sucia' },
+      { name: 'Juan pepe', description: 'es pro' },
+      { name: 'Etesech', description: 'es pro' },
+      { name: 'Popo de burro', description: 'equis de' },
+      { name: 'yon', description: 'asdfasdf' },
+      { name: 'uriel', description: 'no se xd' },
+      { name: 'papayu', description: 'es otra rata' },
+    ]
+  })
+
   //hay que hacer una insercion en la base de datos
   //preparar insercion este prisma es el que usaste en src/lib/prisma.ts
   // const todo = await prisma.todo.create({

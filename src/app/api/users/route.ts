@@ -2,32 +2,24 @@ import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url)
 
-  await prisma.users.deleteMany()
+  const agarrar = Number(searchParams.get('take') ?? '10')
+  const skipear = Number(searchParams.get('skip') ?? '0')
 
-  const usuario = await prisma.users.createMany({
-    data: [
-      { name: 'Hazael', description: 'es pro' },
-      { name: 'Andrea', description: 'Es hermosisima' },
-      { name: 'Abdiel', description: 'e una rata sucia' },
-      { name: 'Juan pepe', description: 'es pro' },
-      { name: 'Etesech', description: 'es pro' },
-      { name: 'Popo de burro', description: 'equis de' },
-      { name: 'yon', description: 'asdfasdf' },
-      { name: 'uriel', description: 'no se xd' },
-      { name: 'papayu', description: 'es otra rata' },
-    ]
+  if (isNaN(agarrar)) {
+    return NextResponse.json({ message: 'Take tiene que ser un numero' }, { status: 400 })
+  }
+
+  if (isNaN(skipear)) {
+    return NextResponse.json({ message: 'Skip tiene que ser un numero' }, { status: 400 })
+  }
+
+  const users = await prisma.users.findMany({
+    //esta cosa espera un number, pero con el +agarrar estamos convirtiendo ese string 'take' a un number
+    take: agarrar,
+    skip: skipear
   })
 
-  const results = await prisma.users.findMany({
-    skip: 3,
-    take: 1,
-  })
-
-  console.log('el resultado de la busqueda es', results)
-  // console.log(usuario)
-
-  return NextResponse.json({
-    user: 'Los usuarios han sido creados'
-  })
+  return NextResponse.json(users)
 }
