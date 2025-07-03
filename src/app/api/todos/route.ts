@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { Bodoni_Moda } from "next/font/google";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -31,4 +32,13 @@ export async function GET(request: Request) {
   })
 
   return NextResponse.json(todos);
+}
+
+
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  const todo = await prisma.todo.create({ data: body })
+
+  return NextResponse.json(todo)
 }
