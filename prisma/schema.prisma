@@ -25,3 +25,12 @@ model Todo {
   updatedAt   DateTime  @updatedAt
 }
 
+model users {
+  id          String    @id @default(uuid())
+  name        String    
+  description String
+  complete    Boolean   @default(false)
+  createdAT   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
