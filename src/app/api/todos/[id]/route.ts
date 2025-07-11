@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import * as yup from "yup";
+import { Todo } from "@/generated/prisma";
 
 interface Segments {
   params: {
@@ -8,16 +9,20 @@ interface Segments {
   }
 }
 
+const getTodo = async (id: string): Promise<Todo | null> => {
+  const todo = await prisma.todo.findFirst({ where: { id } })
+  return todo;
+}
+
 //segments == params == lo que sea que haya en la ruta dinamica [id]
 export async function GET(request: Request, { params }: Segments) {
-  //esto es destructuracion
-  const { id } = params;
-  const todo = await prisma.todo.findFirst({ where: { id } })
-  console.log('este es el todo', todo)
+
+  const todo = await getTodo(params.id)
+  console.log("Este es el todo", todo)
 
   if (!todo) {
     return NextResponse.json(
-      { message: `Todo con id ${id} no existe` },
+      { message: `Todo con id ${params.id} no existe` },
       { status: 404 }// not found
     )
   }
@@ -30,6 +35,7 @@ const putSchema = yup.object({
   description: yup.string().optional(),
 })
 
+//Este lo vamos a dejar sin la funcion getTodo, para ver distintas soluciones jeje
 export async function PUT(request: Request, { params }: Segments) {
   //esto es destructuracion
   const { id } = params;
