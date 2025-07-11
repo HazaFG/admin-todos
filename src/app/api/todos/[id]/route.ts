@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import * as yup from "yup";
 
 interface Segments {
   params: {
@@ -24,6 +25,11 @@ export async function GET(request: Request, { params }: Segments) {
   return NextResponse.json(todo)
 }
 
+const putSchema = yup.object({
+  complete: yup.boolean().optional(),
+  description: yup.string().optional(),
+})
+
 export async function PUT(request: Request, { params }: Segments) {
   //esto es destructuracion
   const { id } = params;
@@ -37,14 +43,17 @@ export async function PUT(request: Request, { params }: Segments) {
     )
   }
 
-  const body = await request.json()
+  try {
+    const { complete, description } = await putSchema.validate(await request.json())
 
-  const updatedTodo = await prisma.todo.update({
-    where: { id },
-    data: { ...body }
-  })
+    const updatedTodo = await prisma.todo.update({
+      where: { id },
+      data: { complete, description }
+    })
 
-  return NextResponse.json(updatedTodo)
+  } catch (error) {
+    return NextResponse.json(error, { status: 400 })
+  }
 }
 
 
