@@ -61,5 +61,3 @@ export async function PUT(request: Request, { params }: Segments) {
     return NextResponse.json(error, { status: 400 })
   }
 }
-
-

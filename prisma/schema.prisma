@@ -1,11 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-//Para que no te pierdas, aqui basicamente es donde vas a crear todos tus modelos de tus tablas de tu base de datos
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -16,21 +8,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// cada vez que se ocupe hacer un cambio en la base de datos o cualquier tipo de cambios, va a ser necesaria una migracion
 model Todo {
-  id          String    @id @default(uuid())
+  id          String   @id @default(uuid())
   description String
-  complete    Boolean   @default(false)
-  createdAT   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  complete    Boolean  @default(false)
+  createdAT   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model users {
-  id          String    @id @default(uuid())
-  name        String    
+  id          String   @id @default(uuid())
+  name        String
   description String
-  complete    Boolean   @default(false)
-  createdAT   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  complete    Boolean  @default(false)
+  createdAT   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
