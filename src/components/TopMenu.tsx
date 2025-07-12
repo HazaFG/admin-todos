@@ -4,7 +4,7 @@ export const TopMenu = () => {
   return (
     <>
 
-      <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
+      <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5 border border-gray-200 ">
 
         <div className="px-6 flex items-center justify-between space-x-4">
           <h5 className="text-2xl text-gray-600 font-medium lg:block">Dashboard</h5>
@@ -22,13 +22,13 @@ export const TopMenu = () => {
               </div>
             </div>
 
-            <button className="flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden">
+            <button className="flex items-center justify-center w-10 h-10 rounded-xl border  bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden">
               <CiSearch />
             </button>
-            <button className="flex items-center justify-center w-10 h-10 rounded-xl border bg-black focus:bg-gray-100 active:bg-gray-200">
+            <button className="flex items-center justify-center w-10 h-10 rounded-xl border border-gray-300 bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
               <CiChat1 size={25} />
             </button>
-            <button className="flex items-center justify-center w-10 h-10 rounded-xl border bg-black focus:bg-gray-100 active:bg-gray-200">
+            <button className="flex items-center justify-center w-10 h-10 rounded-xl border border-gray-300 bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
               <CiBellOn size={25} />
             </button>
           </div>
