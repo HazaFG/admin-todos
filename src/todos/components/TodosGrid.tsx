@@ -21,10 +21,7 @@ export const TodosGrid = ({ todos = [] }: Props) => {
     router.refresh();
     console.log(updatedTodo)
     return updatedTodo;
-    // console.log({ id, complete })
   }
-
-
 
   return (
     <>

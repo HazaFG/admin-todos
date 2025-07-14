@@ -19,3 +19,21 @@ export const updateTodo = async (id: string, complete: boolean): Promise<Todo> =
 
   return dbTodo;
 }
+
+export const createTodo = async (description: string): Promise<Todo> => {
+  const body = { description: description };
+
+  //Realizar peticion http, si la realizamos del lado del servidor entonces necesitamos poner la url completa
+  const dbCrearTodo = await fetch(`/api/todos/`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+
+  }).then(res => res.json())
+  console.log(dbCrearTodo)
+
+  return dbCrearTodo;
+}
+
