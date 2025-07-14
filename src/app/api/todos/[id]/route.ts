@@ -57,6 +57,8 @@ export async function PUT(request: Request, { params }: Segments) {
       data: { complete, description }
     })
 
+    return NextResponse.json({ message: 'Todo editado con exito', updatedTodo })
+
   } catch (error) {
     return NextResponse.json(error, { status: 400 })
   }

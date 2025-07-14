@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image'
-import { CiBookmarkCheck, CiLogout } from 'react-icons/ci';
+import { CiBookmarkCheck, CiLogout, CiTrash } from 'react-icons/ci';
 import { SidebarItem } from './SidebarItem';
 
 const menuItems = [
@@ -12,11 +12,11 @@ const menuItems = [
   {
     path: '/dashboard/rest-todos',
     title: 'Rest TODOS',
-    icon: <CiBookmarkCheck width={30} />
+    icon: <CiTrash width={30} />
   },
   {
     path: '/dashboard/server-actions',
-    title: 'Server Actions',
+    title: 'Popodeburro',
     icon: <CiBookmarkCheck width={30} />
   },
 ]

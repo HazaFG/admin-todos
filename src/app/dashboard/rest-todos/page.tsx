@@ -3,7 +3,7 @@ import { TodosGrid } from "@/todos/components/TodosGrid"
 
 export const metadata = {
   title: 'Listado de todos',
-  description: 'SEO title',
+  description: 'Aqui es donde estan todos nuestros Todos',
 }
 
 export default async function RestTodosPage() {
