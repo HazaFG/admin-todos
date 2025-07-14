@@ -52,3 +52,8 @@ export async function POST(request: Request) {
   }
 
 }
+
+export async function DELETE(request: Request) {
+  const todo = await prisma.todo.deleteMany({ where: { complete: true } })
+  return NextResponse.json({ message: 'Todo eliminado con exito', todo })
+}
