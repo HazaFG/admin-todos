@@ -38,7 +38,6 @@ export async function POST(request: Request) {
     const user = await prisma.users.create({ data: { complete, description, name } })
     return NextResponse.json(user)
 
-
   } catch (error) {
     return NextResponse.json(error, { status: 400 })
   }
