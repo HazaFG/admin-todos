@@ -15,6 +15,11 @@ const menuItems = [
     icon: <CiTrash width={30} />
   },
   {
+    path: '/dashboard/users',
+    title: 'Rest USERS',
+    icon: <CiTrash width={30} />
+  },
+  {
     path: '/dashboard/server-actions',
     title: 'Popodeburro',
     icon: <CiBookmarkCheck width={30} />
