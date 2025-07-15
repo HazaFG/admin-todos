@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import * as yup from 'yup'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -22,4 +23,24 @@ export async function GET(request: Request) {
   })
 
   return NextResponse.json(users)
+}
+
+const userPostSchema = yup.object({
+  name: yup.string().required(),
+  description: yup.string().required(),
+  complete: yup.boolean().optional().default(false)
+})
+
+export async function POST(request: Request) {
+
+  try {
+    const { complete, description, name } = await userPostSchema.validate(await request.json())
+    const user = await prisma.users.create({ data: { complete, description, name } })
+    return NextResponse.json(user)
+
+
+  } catch (error) {
+    return NextResponse.json(error, { status: 400 })
+  }
+
 }
