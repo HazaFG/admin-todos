@@ -21,7 +21,7 @@ const menuItems = [
   },
   {
     path: '/dashboard/server-actions',
-    title: 'Popodeburro',
+    title: 'Server actions',
     icon: <CiBookmarkCheck width={30} />
   },
 ]

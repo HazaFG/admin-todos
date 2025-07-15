@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 export const NewTodo = () => {
   const router = useRouter();
   const [description, setDescription] = useState('');
-  const [complete, setComplete] = useState(true)
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma"
-import { TodosGrid } from "@/todos/components/TodosGrid"
+import { UsersGrid } from "@/todos-users/components/UsersGrid"
 
 export const metadata = {
   title: 'Listado de usuarios',
@@ -13,7 +13,7 @@ export default async function usersPage() {
     <>
       <h1>HOla, soy la usersPage</h1>
       {
-        <TodosGrid todos={users} />
+        <UsersGrid users={users} />
       }
     </>
   )
