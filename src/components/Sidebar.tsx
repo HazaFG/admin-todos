@@ -1,28 +1,29 @@
 import Link from 'next/link';
 import Image from 'next/image'
-import { CiBookmarkCheck, CiLogout, CiTrash } from 'react-icons/ci';
+import { CiLogout, } from 'react-icons/ci';
 import { SidebarItem } from './SidebarItem';
+import { IoBody, IoDesktop, IoBookSharp, IoAlbums } from 'react-icons/io5';
 
 const menuItems = [
   {
     path: '/dashboard ',
     title: 'Dashboard',
-    icon: <CiBookmarkCheck width={30} />
+    icon: <IoAlbums width={30} />
   },
   {
     path: '/dashboard/rest-todos',
     title: 'Rest TODOS',
-    icon: <CiTrash width={30} />
+    icon: <IoBookSharp width={30} />
   },
   {
     path: '/dashboard/users',
     title: 'Rest USERS',
-    icon: <CiTrash width={30} />
+    icon: <IoBody width={30} />
   },
   {
     path: '/dashboard/server-todos',
     title: 'Server actions',
-    icon: <CiBookmarkCheck width={30} />
+    icon: <IoDesktop width={30} />
   },
 ]
 
