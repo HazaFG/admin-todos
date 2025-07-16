@@ -3,8 +3,9 @@
 import { Todo } from "@/generated/prisma";
 import { TodoItem } from "./TodoItem";
 
-import * as todoApi from '@/todos/helpers/todos'
+// import * as todoApi from '@/todos/helpers/todos'
 import { useRouter } from "next/navigation";
+import { toggleTodo } from "../actions/todo-actions";
 
 interface Props {
   //aqui me puedo traer el tipo Todo coomo arreglooo, y ya me tiene todos lo datos de la base de datoooos 
@@ -16,12 +17,14 @@ export const TodosGrid = ({ todos = [] }: Props) => {
   // console.log(todos)
   const router = useRouter();
 
-  const toggleTodo = async (id: string, complete: boolean) => {
-    const updatedTodo = await todoApi.updateTodo(id, complete)
-    router.refresh();
-    console.log(updatedTodo)
-    return updatedTodo;
-  }
+  // const toggleTodo = async (id: string, complete: boolean) => {
+  //   const updatedTodo = await todoApi.updateTodo(id, complete)
+  //   router.refresh();
+  //   console.log(updatedTodo)
+  //   return updatedTodo;
+  // }
+  // no va a ser necesario crear esta funcion
+  // const onToggleTodo = 
 
   return (
     <>

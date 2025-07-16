@@ -5,7 +5,6 @@ interface Props {
   users?: users[];
 }
 
-
 export const UsersGrid = ({ users = [] }: Props) => {
   return (
     <>

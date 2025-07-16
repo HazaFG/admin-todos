@@ -20,7 +20,7 @@ const menuItems = [
     icon: <CiTrash width={30} />
   },
   {
-    path: '/dashboard/server-actions',
+    path: '/dashboard/server-todos',
     title: 'Server actions',
     icon: <CiBookmarkCheck width={30} />
   },
