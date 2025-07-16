@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 import prisma from "@/lib/prisma"
 import { NewTodo } from "@/todos/components/NewTodo"
 import { TodosGrid } from "@/todos/components/TodosGrid"
@@ -10,6 +13,7 @@ export const metadata = {
 export default async function SeverTodosPage() {
   //Aqui vamos a precargar los todos ya que ya los tenemos en prisma, es decir, desde nuestra base de datos, no lo estamos haciendo desde helpers, este seria el get por asi decirlo 
   const todos = await prisma.todo.findMany({ orderBy: { description: 'asc' } })
+
 
   return (
     <>
