@@ -15,7 +15,9 @@ interface Props {
 export const TodosGrid = ({ todos = [] }: Props) => {
   //Estos todos ya estan del lado del clienteeeee, omg omg
   // console.log(todos)
-  const router = useRouter();
+
+  // const router = useRouter();
+  //
 
   // const toggleTodo = async (id: string, complete: boolean) => {
   //   const updatedTodo = await todoApi.updateTodo(id, complete)
