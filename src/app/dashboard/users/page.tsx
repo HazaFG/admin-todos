@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma"
+import { NewUser } from "@/todos-users/components/NewUser"
 import { UsersGrid } from "@/todos-users/components/UsersGrid"
 
 export const metadata = {
@@ -7,11 +8,14 @@ export const metadata = {
 }
 
 export default async function usersPage() {
+  //Hacemos el primero de todos, el cual es el get, y es el unico que va a figuar aqui, el resto los manejaremos en el helper.ts
   const users = await prisma.users.findMany()
 
   return (
     <>
-      <h1>HOla, soy la usersPage</h1>
+      <div className="ml-10 mb-4">
+        <NewUser />
+      </div>
       {
         <UsersGrid users={users} />
       }
