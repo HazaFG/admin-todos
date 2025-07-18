@@ -1,6 +1,7 @@
 import { users } from "@/generated/prisma"
 import { ImOnedrive } from "react-icons/im";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { NewUser } from "./NewUser";
 
 interface Props {
   user: users;
@@ -9,8 +10,8 @@ interface Props {
 export const UsersItem = ({ user }: Props) => {
   return (
     <div
-      className={`py-4 px-6 rounded-lg shadow-md flex flex-row justify-between items-center gap-2 sm:gap-0`}>
-
+      className={`py-4 px-6 rounded-lg shadow-md flex flex-col sm:gap-0`}>
+      <NewUser />
       <div className="flex flex-cols sm:flex-row justify-start items-center gap-4">
         <div className={`
          flex p-2 rounded-md cursor-pointer

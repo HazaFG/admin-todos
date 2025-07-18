@@ -1,0 +1,22 @@
+'use client'
+
+import { users } from "@/generated/prisma"
+
+//Vamos a usar API Rest para los usuarios, y los todos lo mantendremos con server actions
+
+//Esta funcion va a ser para el toggle de completado o no
+export const updateUser = async (id: string, complete: boolean, name: string): Promise<users> => {
+  const body = { complete: complete, name: name };
+
+  const updatedUser = await fetch(`/api/users/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+
+  }).then(res => res.json())
+  console.log(updatedUser);
+
+  return updatedUser;
+}

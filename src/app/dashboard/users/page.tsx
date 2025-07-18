@@ -13,9 +13,9 @@ export default async function usersPage() {
 
   return (
     <>
-      <div className="ml-10 mb-4">
-        <NewUser />
-      </div>
+      {/* <div className="ml-10 mb-4"> */}
+      {/*   <NewUser /> */}
+      {/* </div> */}
       {
         <UsersGrid users={users} />
       }
