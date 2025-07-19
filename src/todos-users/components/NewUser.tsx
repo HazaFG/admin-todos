@@ -1,9 +1,20 @@
-import { IoTrashOutline } from "react-icons/io5";
+'use client'
 
+import { IoTrashOutline } from "react-icons/io5";
+// import * as todoApi from '@/todos-users/helpers/users'
+// import { useRouter } from "next/navigation";
+
+// const editUser = async (id: string, complete: boolean, name: string, description: string) => {
+//   const router = useRouter()
+//   const updatedUser = await todoApi.updateUser(id, complete, name, description);
+//   router.refresh();
+//   console.log("Este es el usuario editado", updatedUser)
+//   return updatedUser;
+// }
 
 export const NewUser = () => {
   return (
-    <form className='flex flex-col w-full '>
+    <form className='flex flex-col w-full'>
       <div className="flex flex-col">
         <input type="text"
           className="w-full pl-3 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-sky-500 transition-all"

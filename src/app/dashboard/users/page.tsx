@@ -1,5 +1,4 @@
 import prisma from "@/lib/prisma"
-import { NewUser } from "@/todos-users/components/NewUser"
 import { UsersGrid } from "@/todos-users/components/UsersGrid"
 
 export const metadata = {

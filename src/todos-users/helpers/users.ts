@@ -5,8 +5,8 @@ import { users } from "@/generated/prisma"
 //Vamos a usar API Rest para los usuarios, y los todos lo mantendremos con server actions
 
 //Esta funcion va a ser para el toggle de completado o no
-export const updateUser = async (id: string, complete: boolean, name: string): Promise<users> => {
-  const body = { complete: complete, name: name };
+export const updateUser = async (id: string, complete: boolean, name: string, description: string): Promise<users> => {
+  const body = { complete: complete, name: name, description: description };
 
   const updatedUser = await fetch(`/api/users/${id}`, {
     method: 'PUT',

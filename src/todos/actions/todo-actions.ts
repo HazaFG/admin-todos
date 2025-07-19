@@ -1,6 +1,8 @@
 //con use server estamos forzando que esto se ejecute del lado del servidor, pero que a su vez podamos mandarlo a llamar, esto es muy muy pro
 "use server"
 
+//Estos son las server actions
+
 import { Todo } from "@/generated/prisma"
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache"
