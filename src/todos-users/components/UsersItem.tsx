@@ -80,7 +80,7 @@ export const UsersItem = ({ user }: Props) => {
           </button>
           <button type="button" onClick={() => toggleUserComplete(user.id, !user.complete, user.name, user.description)}>
             <label className="relative inline-block w-[60px] h-[34px] ">
-              <input type="checkbox" className="peer opacity-0 w-0 h-0" />
+              <input type="checkbox" className="peer opacity-0 w-0 h-0 " defaultChecked={user.complete} />
               <span className="absolute top-0 left-0 right-0 bottom-0 bg-gray-300 peer-checked:bg-blue-500 transition duration-400 rounded-full"></span>
               <span className="absolute left-1 bottom-1 w-[26px] h-[26px] bg-white rounded-full transition duration-400 peer-checked:translate-x-[26px]"></span>
             </label>
