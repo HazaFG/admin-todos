@@ -1,9 +1,19 @@
+import { TabBar } from "@/components/TabBar"
+
+export const metadata = {
+  title: 'Cookies Page',
+  description: 'Esta es la cookies page'
+}
+
 export default function CookiesPage() {
   return (
     <>
-      <h1>
-        HOla, soy la cookiesPage
-      </h1>
+      <div className="grid grid-cols-1 sm: grid-cols-2 gap-3">
+        <div className="flex flex-col ">
+          <span className="text-3xl">Tabs</span>
+          <TabBar />
+        </div>
+      </div>
     </>
   )
 }

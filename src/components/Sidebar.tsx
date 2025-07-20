@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { CiLogout, } from 'react-icons/ci';
 import { SidebarItem } from './SidebarItem';
-import { IoBody, IoDesktop, IoBookSharp, IoAlbums } from 'react-icons/io5';
+import { IoBody, IoDesktop, IoBookSharp, IoAlbums, IoCodeWorkingOutline } from 'react-icons/io5';
 
 const menuItems = [
   {
@@ -24,6 +24,11 @@ const menuItems = [
     path: '/dashboard/server-todos',
     title: 'Server actions',
     icon: <IoDesktop width={30} />
+  },
+  {
+    path: '/dashboard/cookies',
+    title: 'Cookies',
+    icon: <IoCodeWorkingOutline width={30} />
   },
 ]
 
