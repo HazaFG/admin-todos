@@ -43,3 +43,12 @@ export async function POST(request: Request) {
   }
 
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const userDeleted = await prisma.users.deleteMany({ where: { complete: true } })
+    return NextResponse.json(userDeleted)
+  } catch (error) {
+    return NextResponse.json(error, { status: 400 })
+  }
+}

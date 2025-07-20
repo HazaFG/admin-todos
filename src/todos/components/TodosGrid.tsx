@@ -2,9 +2,6 @@
 
 import { Todo } from "@/generated/prisma";
 import { TodoItem } from "./TodoItem";
-
-// import * as todoApi from '@/todos/helpers/todos'
-import { useRouter } from "next/navigation";
 import { toggleTodo } from "../actions/todo-actions";
 
 interface Props {

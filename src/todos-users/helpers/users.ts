@@ -20,3 +20,15 @@ export const updateUser = async (id: string, complete: boolean, name: string, de
 
   return updatedUser;
 }
+
+export const deleteUser = async (): Promise<void> => {
+  const updatedUser = await fetch(`/api/users/`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+  console.log(updatedUser);
+
+  return updatedUser;
+}

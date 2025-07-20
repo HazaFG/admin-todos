@@ -1,18 +1,18 @@
 'use client'
 
 import { IoTrashOutline } from "react-icons/io5";
-// import * as todoApi from '@/todos-users/helpers/users'
-// import { useRouter } from "next/navigation";
-
-// const editUser = async (id: string, complete: boolean, name: string, description: string) => {
-//   const router = useRouter()
-//   const updatedUser = await todoApi.updateUser(id, complete, name, description);
-//   router.refresh();
-//   console.log("Este es el usuario editado", updatedUser)
-//   return updatedUser;
-// }
+import * as todoApi from '@/todos-users/helpers/users'
+import { useRouter } from "next/navigation";
 
 export const NewUser = () => {
+  const router = useRouter();
+
+  const handleDeleteUser = async () => {
+    const deleteUser = await todoApi.deleteUser()
+    router.refresh();
+    return deleteUser;
+  }
+
   return (
     <form className='flex flex-col w-full'>
       <div className="flex flex-col">
@@ -28,6 +28,7 @@ export const NewUser = () => {
         <button type='submit' className="flex items-center justify-center rounded ml-2 bg-sky-500 p-2 text-white hover:bg-sky-700 transition-all">Editar</button>
 
         <button
+          onClick={handleDeleteUser}
           type='button' className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
           <IoTrashOutline />
           Delete

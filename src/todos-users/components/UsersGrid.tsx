@@ -2,8 +2,6 @@
 
 import { users } from "@/generated/prisma"
 import { UsersItem } from "./UsersItem";
-import * as usersApi from "@/todos-users/helpers/users"
-import { useRouter } from "next/navigation";
 
 interface Props {
   users?: users[];

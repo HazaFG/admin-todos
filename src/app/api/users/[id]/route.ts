@@ -16,6 +16,7 @@ const getTodoById = async (id: string): Promise<users | null> => {
 
 export async function GET(request: Request, { params }: Segments) {
   const user = await getTodoById(params.id)
+  console.log(request)
   console.log('este es el user', user)
 
   if (!user) {
