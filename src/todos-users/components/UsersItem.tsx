@@ -40,7 +40,7 @@ export const UsersItem = ({ user }: Props) => {
   return (
     <div
       className={`py-4 px-6 rounded-lg shadow-md flex flex-col sm:gap-0`}>
-      <div className="flex flex-cols sm:flex-row justify-start items-center gap-4">
+      <div className="flex flex-wrap justify-start items-center gap-4">
         <div className={`
          flex p-2 rounded-md cursor-pointer
          hover:bg-opacity-60
@@ -74,10 +74,11 @@ export const UsersItem = ({ user }: Props) => {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 transition-all"
+            className="mt-4 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 transition-all"
           >
             Editar
           </button>
+
           <button type="button" onClick={() => toggleUserComplete(user.id, !user.complete, user.name, user.description)}>
             <label className="relative inline-block w-[60px] h-[34px] ">
               <input type="checkbox" className="peer opacity-0 w-0 h-0 " defaultChecked={user.complete} />

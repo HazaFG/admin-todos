@@ -21,6 +21,23 @@ export const updateUser = async (id: string, complete: boolean, name: string, de
   return updatedUser;
 }
 
+//Esta funcion va a ser para crear un usuario nuevo
+export const createUser = async (complete: boolean, name: string, description: string): Promise<users> => {
+  const body = { complete: complete, name: name, description: description };
+
+  const updatedUser = await fetch(`/api/users/`, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+
+  }).then(res => res.json())
+  console.log(updatedUser);
+
+  return updatedUser;
+}
+
 export const deleteUser = async (): Promise<void> => {
   const updatedUser = await fetch(`/api/users/`, {
     method: 'DELETE',
