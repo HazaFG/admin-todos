@@ -1,5 +1,6 @@
 'use client'
 
+import { setCookie } from "cookies-next";
 import { useState } from "react";
 
 interface Props {
@@ -11,8 +12,10 @@ export const TabBar = ({ currentTab = 1, tabOptions = [1, 2, 3, 4] }: Props) => 
 
   const [selected, setSelected] = useState(currentTab)
 
+  //Esta jalada hace que se marque el tab seleccionado, sepa como fregados lo hace, pero bueno, toca aprenderlo 
   const onTabSelected = (tab: number) => {
     setSelected(tab)
+    setCookie('SelectedTab', tab.toString())
   }
 
   return (
