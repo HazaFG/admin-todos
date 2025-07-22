@@ -9,7 +9,6 @@ interface Props {
 }
 
 export const TabBar = ({ currentTab = 1, tabOptions = [1, 2, 3, 4] }: Props) => {
-
   const [selected, setSelected] = useState(currentTab)
 
   //Esta jalada hace que se marque el tab seleccionado, sepa como fregados lo hace, pero bueno, toca aprenderlo 
