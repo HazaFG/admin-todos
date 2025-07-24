@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { CiBellOn, CiChat1, CiMenuBurger, CiSearch, CiShoppingBasket } from 'react-icons/ci';
+import { CiChat1, CiMenuBurger, CiSearch, CiShoppingBasket } from 'react-icons/ci';
 
 
 const getTotalCount = (cart: { [id: string]: number }): number => {
@@ -12,12 +12,9 @@ const getTotalCount = (cart: { [id: string]: number }): number => {
   return items;
 }
 
+export const TopMenu = async () => {
 
-
-
-export const TopMenu = () => {
-
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cart = JSON.parse(cookieStore.get('cart')?.value ?? '{}');
 
   const totalItems = getTotalCount(cart)
