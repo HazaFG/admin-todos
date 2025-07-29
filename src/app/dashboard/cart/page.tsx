@@ -1,3 +1,4 @@
+import { WidgetItem } from "@/components/WidgetItem";
 import { Product, products } from "@/products/data/products";
 import { ItemCard } from "@/shopping-cart/components/ItemCard";
 import { cookies } from "next/headers";
@@ -28,6 +29,11 @@ export default function CartPage() {
   const cart = JSON.parse(cookiesStore.get('cart').value ?? '{}') as { [id: string]: number }
   const productsInCart = getProductsInCart(cart)
 
+  const totalPay = productsInCart.reduce(
+    (prev, current) => (current.product.price * current.quantity) + prev, 0
+  )
+
+
   return (
     <>
       <h1 className="text-3xl">Productos en el carrito</h1>
@@ -41,6 +47,19 @@ export default function CartPage() {
               <ItemCard product={product} quantity={quantity} key={product.id} />
             ))
           }
+        </div>
+
+        <div className="flex flex-col w-full sm:w-4/12">
+
+          <WidgetItem title="Total a pagar">
+
+            <div className="mt-2 flex justify-center">
+              <h2 className="text-3xl font-bold text-gray-700">${(totalPay * 1.15).toFixed(2)}</h2>
+            </div>
+            <span className="font-bold text-center ">Impuestos 15%: ${(totalPay * 0.15).toFixed(2)} </span>
+          </WidgetItem>
+
+
         </div>
 
 
