@@ -16,7 +16,7 @@ model Todo {
   updatedAt   DateTime @updatedAt
 }
 
-model users {
+model usersTodos {
   id          String   @id @default(uuid())
   name        String
   description String
