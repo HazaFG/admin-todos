@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { CiLogout, } from 'react-icons/ci';
 import { SidebarItem } from './SidebarItem';
-import { IoBasketOutline, IoBody, IoDesktop, IoBookSharp, IoAlbums, IoCodeWorkingOutline } from 'react-icons/io5';
+import { IoBasketOutline, IoBody, IoDesktop, IoBookSharp, IoAlbums, IoCodeWorkingOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
@@ -37,6 +37,11 @@ const menuItems = [
     path: '/dashboard/products',
     title: 'Products',
     icon: <IoBasketOutline width={30} />
+  },
+  {
+    path: '/dashboard/profile',
+    title: 'Perfil',
+    icon: <IoPersonCircleOutline width={30} />
   },
 ]
 
