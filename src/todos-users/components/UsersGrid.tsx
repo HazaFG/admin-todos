@@ -1,10 +1,10 @@
 'use client'
 
-import { users } from "@/generated/prisma"
+import { usersTodos } from "@/generated/prisma"
 import { UsersItem } from "./UsersItem";
 
 interface Props {
-  users?: users[];
+  users?: usersTodos[];
 }
 
 export const UsersGrid = ({ users = [] }: Props) => {

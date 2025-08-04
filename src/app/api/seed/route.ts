@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     ]
   })
 
-  await prisma.users.createMany({
+  await prisma.usersTodos.createMany({
     data: [
       { name: 'Hazael', description: 'es pro' },
       { name: 'Andrea', description: 'Es hermosisima' },

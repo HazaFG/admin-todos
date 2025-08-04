@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ message: 'Skip tiene que ser un numero' }, { status: 400 })
   }
 
-  const users = await prisma.users.findMany({
+  const users = await prisma.usersTodos.findMany({
     //esta cosa espera un number, pero con el +agarrar estamos convirtiendo ese string 'take' a un number
     take: agarrar,
     skip: skipear
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
   try {
     const { complete, description, name } = await userPostSchema.validate(await request.json())
-    const user = await prisma.users.create({ data: { complete, description, name } })
+    const user = await prisma.usersTodos.create({ data: { complete, description, name } })
     return NextResponse.json(user)
 
   } catch (error) {
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const userDeleted = await prisma.users.deleteMany({ where: { complete: true } })
+    const userDeleted = await prisma.usersTodos.deleteMany({ where: { complete: true } })
     return NextResponse.json(userDeleted)
   } catch (error) {
     return NextResponse.json(error, { status: 400 })

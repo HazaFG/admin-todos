@@ -1,6 +1,6 @@
 'use client'
 
-import { users } from "@/generated/prisma"
+import { users, usersTodos } from "@/generated/prisma"
 import { ImOnedrive } from "react-icons/im";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import * as usersHelpers from '@/todos-users/helpers/users'
@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 
 interface Props {
-  user: users,
+  user: usersTodos,
 }
 
 export const UsersItem = ({ user }: Props) => {

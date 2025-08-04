@@ -6,8 +6,7 @@ import { redirect } from "next/navigation";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions)
 
-
-  //Si no hay sesion del usuario
+  // Si no hay sesion del usuario, pues redirige ahi xd
   if (!session) {
     redirect('/api/auth/signin')
   }

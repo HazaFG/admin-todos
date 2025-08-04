@@ -1,4 +1,4 @@
-import { users } from "@/generated/prisma";
+import { usersTodos } from "@/generated/prisma";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import * as yup from "yup";
@@ -9,8 +9,8 @@ interface Segments {
   }
 }
 
-const getTodoById = async (id: string): Promise<users | null> => {
-  const user = await prisma.users.findFirst({ where: { id } })
+const getTodoById = async (id: string): Promise<usersTodos | null> => {
+  const user = await prisma.usersTodos.findFirst({ where: { id } })
   return user;
 }
 
@@ -39,7 +39,7 @@ export async function PUT(request: Request, { params }: Segments) {
 
   //Aqui no usaremos una funcion como la del getTodoById, lo obtendremos con destructuracion
   const { id } = params;
-  const user = await prisma.users.findFirst({ where: { id } })
+  const user = await prisma.usersTodos.findFirst({ where: { id } })
 
   if (!user) {
     return NextResponse.json(
@@ -50,7 +50,7 @@ export async function PUT(request: Request, { params }: Segments) {
 
   try {
     const { complete, name, description } = await putSchema.validate(await request.json())
-    const updatedUser = await prisma.users.updateMany({ where: { id }, data: { complete, name, description } })
+    const updatedUser = await prisma.usersTodos.updateMany({ where: { id }, data: { complete, name, description } })
     return NextResponse.json({ message: 'User editado con exito', updatedUser })
 
   } catch (error) {
