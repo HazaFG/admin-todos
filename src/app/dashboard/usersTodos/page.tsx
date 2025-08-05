@@ -9,7 +9,7 @@ export const metadata = {
 
 export default async function usersPage() {
   //Hacemos el primero de todos, el cual es el get, y es el unico que va a figuar aqui, el resto los manejaremos en el helper.ts
-  const users = await prisma.usersTodos.findMany()
+  const usersTodos = await prisma.usersTodos.findMany()
 
   return (
     <>
@@ -17,7 +17,7 @@ export default async function usersPage() {
         <NewUser />
       </div>
       {
-        <UsersGrid users={users} />
+        <UsersGrid users={usersTodos} />
       }
     </>
   )

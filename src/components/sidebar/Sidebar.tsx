@@ -19,7 +19,7 @@ const menuItems = [
     icon: <IoBookSharp width={30} />
   },
   {
-    path: '/dashboard/users',
+    path: '/dashboard/usersTodos',
     title: 'Rest USERS',
     icon: <IoBody width={30} />
   },
