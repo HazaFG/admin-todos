@@ -50,6 +50,9 @@ export const Sidebar = async () => {
   //Vamos a obtener la informacion del usuario para el sidebar, del lado del servidor, la informacion del usuario autenticado
   const session = await getServerSession(authOptions)
 
+  //Roles
+  const userRoles = session?.user?.roles ?? ['no roles']
+
   if (!session) {
     redirect('/api/auth/signin')
   }
@@ -76,7 +79,7 @@ export const Sidebar = async () => {
               className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
             />
             <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">{session.user?.name}</h5>
-            <span className="hidden text-gray-400 lg:block">Admin</span>
+            <span className="hidden text-gray-400 lg:block capitalize">{userRoles.join(', ')}</span>
           </div>
 
           {

@@ -44,11 +44,16 @@ export const authOptions: NextAuthOptions = {
       //Esta linea es magica, cito a Fernando Herrera: Con este email que vemos en el token, yo puedo verificar mi base de datos, en la parte del token, para que una vez que este se cree, a la hora de hacer consultas nos basamos en el token, no hacemos otras consultas
       const dbUser = await prisma.user.findUnique({ where: { email: token.email ?? 'no-email' } });
 
+      if (dbUser?.isActive === false) {
+        throw Error('El usuario no esta activo')
+      }
+
+
       //ahora dbUser YA TIENE TODA LA INFORMACION, TODA
 
       //Al token le vamos a meter la informacion adicional que necesitamos, la de roles y la de isActive
       token.roles = dbUser?.roles ?? ['no-roles']
-      token.id = dbUser?.id ?? ['no-uuid']
+      token.id = dbUser?.id ?? 'no-uuid'
 
       //yo en este token le puedo pasar la informacion que yo quiera para procesarla si yo lo deseo
       return token;
