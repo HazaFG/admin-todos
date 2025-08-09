@@ -4,6 +4,11 @@ import NextAuth, { NextAuthOptions } from "next-auth"
 import { Adapter } from "next-auth/adapters";
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
+import CredentialsProvider from "next-auth/providers/credentials";
+
+
+//Ojito, esta es la que acabamos de crear en nuestras acciones
+import { signInEmailPassword } from "@/auth/actions/auth-actions";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
@@ -18,7 +23,28 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GITHUB_ID ?? '',
       clientSecret: process.env.GITHUB_SECRET ?? '',
     }),
-    // ...add more providers here
+
+    CredentialsProvider({
+      name: "Credentials",
+
+      credentials: {
+        email: { label: "Correo electrónico", type: "email", placeholder: "Correo electronico" },
+        password: { label: "Contraseña", type: "password", placeholder: "Password" }
+      },
+
+      async authorize(credentials, req) {
+        // Add logic here to look up the user from the credentials supplied
+
+        // Siempre debemos tener estas credenciales, por eso el !
+        const user = await signInEmailPassword(credentials!.email, credentials!.password)
+
+        if (user) {
+          // Any object returned will be saved in `user` property of the JWT
+          return user;
+        }
+        return null
+      }
+    }),
   ],
 
   //Nosotros tenemos que especificarle a OAuth que estos campos nuevos que metimos, isActive y los roles(de momento)
