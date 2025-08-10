@@ -78,7 +78,7 @@ export const Sidebar = async () => {
 
           <div className="mt-8 text-center filled">
             <Image
-              src={(!session.user?.image) ? '/logo.svg' : session.user.id}
+              src={session.user?.image}
               alt=""
               width={45}
               height={45}
