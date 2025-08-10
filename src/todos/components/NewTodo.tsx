@@ -2,20 +2,25 @@
 
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-// import * as todoApi from '@/todos/helpers/todos'
+import * as todoApi from '@/todos/helpers/todos'
 import { useRouter } from "next/navigation";
 import { addTodo, deleteCompleted } from "../actions/todo-actions";
 
 export const NewTodo = () => {
   // const router = useRouter();
   const [description, setDescription] = useState('');
+  const router = useRouter()
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     //Creamos nuestro nuevo todo
-    await addTodo(description)
-    // router.refresh()
+
+    // await addTodo(description, user.id)
+
+    //Vamos a volver a usar REST api para hacer esto, ya que no dicen como hacerlo con server actions xd
+    await todoApi.createTodo(description)
+    router.refresh()
 
     if (description.trim().length === 0) return;
 

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getUserSessionServer } from "@/auth/actions/auth-actions";
 import prisma from "@/lib/prisma";
 import * as yup from "yup";
 import { Todo } from "@/generated/prisma";
@@ -10,7 +11,18 @@ interface Segments {
 }
 
 const getTodo = async (id: string): Promise<Todo | null> => {
+  const user = await getUserSessionServer();
+
+  if (!user) {
+    return null
+  }
+
   const todo = await prisma.todo.findFirst({ where: { id } })
+
+  if (todo?.userId !== user.id) {
+    return null
+  }
+
   return todo;
 }
 
@@ -37,6 +49,12 @@ const putSchema = yup.object({
 
 //Este lo vamos a dejar sin la funcion getTodo, para ver distintas soluciones jeje
 export async function PUT(request: Request, { params }: Segments) {
+  const user = await getUserSessionServer();
+
+  if (!user) {
+    return NextResponse.json('NO autorizado', { status: 401 })
+  }
+
   //esto es destructuracion
   const { id } = params;
   const todo = await prisma.todo.findFirst({ where: { id } })
