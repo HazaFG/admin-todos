@@ -20,7 +20,7 @@ npx prisma generate
 
 ## Nota: Usuario por defecto
 usuario: test1@gmail.com
-password: 123456
+password: 12356
 
 # Prisma commands
 ```
