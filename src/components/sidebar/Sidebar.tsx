@@ -57,6 +57,12 @@ export const Sidebar = async () => {
     redirect('/api/auth/signin')
   }
 
+  // const switchImage = () => {
+  //   if (!session.user?.image) {
+  //     console.log('No hay imagen')
+  //   }
+  //   session.user?.image
+  // }
 
   return (
     <>
@@ -70,9 +76,9 @@ export const Sidebar = async () => {
             </Link>
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center filled">
             <Image
-              src={session.user?.image}
+              src={(!session.user?.image) ? '/logo.svg' : session.user.id}
               alt=""
               width={45}
               height={45}
